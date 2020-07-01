@@ -46,6 +46,7 @@ library
       Servant.Client.Core.Request
       Servant.Client.Core.Response
       Servant.Client.Core.RunClient
+      Servant.Client.Core.ServerSentEvents
 
   other-modules:
       Servant.Client.Core.Internal
@@ -83,6 +84,7 @@ library
     , http-types            >= 0.12.2   && < 0.13
     , network-uri           >= 2.6.1.0  && < 2.7
     , safe                  >= 0.3.17   && < 0.4
+    , attoparsec            >= 0.13.2.2 && < 0.14
 
   hs-source-dirs:      src
   default-language:    Haskell2010
@@ -97,11 +99,15 @@ test-suite spec
   other-modules:
       Servant.Client.Core.Internal.BaseUrlSpec
       Servant.Client.Core.RequestSpec
+      Servant.Client.Core.ServerSentEventsSpec
 
   -- Dependencies inherited from the library. No need to specify bounds.
   build-depends:
       base
     , base-compat
+    , bytestring
+    , transformers
+    , servant
     , servant-client-core
 
   -- Additional dependencies
